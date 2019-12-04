@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Hello World!</title>
+</head>
+
+<body>
+  <h1>Copy Shop to event root</h1>
+  <div>
+    <!-- <input type="text" id="inputPath" placeholder="Choose event folder">
+    <button id="btnChoosePath" for="file-input">...</button>
+    <input type="file" id="file-input"/> -->
+    <input type="file" webkitdirectory multiple/>
+  </div>
+  <div>
+    <button id="btnStart">Start</button>
+  </div>
+  <script src="./renderer.js"></script>
+</body>
+
+</html>
