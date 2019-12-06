@@ -7,7 +7,6 @@ const MoveFileToRoot = function (processPath, folder) {
     for(let i = 0; i<files.length; i++){
 
         if (`${folder}_SHOP.png` == files[i]) {
-            // console.log(folder, file)
             fs.copyFileSync(`${processPath}\\${folder}\\${files[i]}`, `${processPath}\\${files[i]}`);
             foundedStat = ''
             break
