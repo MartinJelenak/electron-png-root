@@ -11,49 +11,53 @@ let win;
 
 function createWindow() {
 
-  win = new BrowserWindow({
-    // frame: false,
-    width: 500,
-    height: 300,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  })
+    win = new BrowserWindow({
+        // frame: false,
+        width: 227,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true
+            
+        },
+        resizable: false
+    })
 
-  win.setMenuBarVisibility(true)
+    win.setMenuBarVisibility(false)
 
-  win.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
-
-  win.on('closed', () => {
-    win = null
-  });
+    win.loadURL(url.format({
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+    // win.webContents.openDevTools()
+    win.on('closed', () => {
+        win = null
+    });
 }
 
+
+
 ipcMain.on('open-file-dialog', (event) => {
-  dialog.showOpenDialog({
-    properties: ['openFile', 'openDirectory']
-  }, (files) => {
-    if (files) {
-      event.sender.send('selected-directory', files)
-    }
-  });
+    dialog.showOpenDialog({
+        properties: ['openFile', 'openDirectory']
+    }, (files) => {
+        if (files) {
+            event.sender.send('selected-directory', files)
+        }
+    });
 })
+
 app.on('ready', createWindow);
 
-
-
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
 });
 
 app.on('activate', () => {
-  if (win === null) {
-    createWindow();
-  }
+    if (win === null) {
+        createWindow();
+    }
+
 });

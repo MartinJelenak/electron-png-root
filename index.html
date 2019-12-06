@@ -2,25 +2,27 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-  <title>Hello World!</title>
+    <meta charset="UTF-8">
+    <title>Event cleaner</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Copy Shop to event root</h1>
-  <div>
-    <!-- <input type="text" id="inputPath" placeholder="Choose event folder">
-    <button id="btnChoosePath" for="file-input">...</button>
-    <input type="file" id="file-input"/> -->
-    <input type="file" webkitdirectory multiple/>
-  </div>
-  <div>
-    <button id="btnStart">Start</button>
-  </div>
-  <script src="./renderer.js"></script>
+    <div>
+        <h3>Shop render to root</h3>
+    </div>
+
+    <div class="inputsDiv">
+        <input type="text" placeholder="Choose event folder" value="" id="choosenFile">
+        <button class="btn btn-outline-secondary" id="errorBtn">...</button>
+
+    </div>
+    <div>
+        <button id="startBtn">Start</button>
+    </div>
+    <div id="errors"></div>
+    <script src="./renderer.js"></script>
 </body>
 
 </html>

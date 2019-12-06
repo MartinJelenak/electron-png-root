@@ -1,0 +1,18 @@
+body{
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+}
+
+.error{
+    color: red;
+}
+
+#startBtn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 204px;
+}
+
+#inputsDiv{
+    margin-top: 10px;
+}
