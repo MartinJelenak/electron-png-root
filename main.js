@@ -13,14 +13,14 @@ function createWindow() {
 
     win = new BrowserWindow({
         // frame: false,
-        // width: 227,
-        width: 600,
-        height: 800,
+        width: 300,
+        // width: 600,
+        height: 600,
         webPreferences: {
             nodeIntegration: true
 
         },
-        // resizable: false
+        resizable: false
     })
 
     win.setMenuBarVisibility(false)
@@ -30,7 +30,7 @@ function createWindow() {
         protocol: 'file:',
         slashes: true
     }));
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
     win.on('closed', () => {
         win = null
     });

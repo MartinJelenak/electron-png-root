@@ -1,6 +1,7 @@
 body {
     font-family: 'Nunito', sans-serif;
     text-align: center;
+    margin: 20px;
 }
 
 .error {
@@ -17,14 +18,16 @@ body {
     margin-top: 10px;
 }
 
-#bar {
-    width: 204px;
-    margin: 10px;
-    color: white;
+#barr {
+    border-top: 1px solid rgb(202, 202, 202);
+    height: 20px;
+    width: auto;
+    margin-bottom: 10px;
 }
 
 #progress {
-    background-color: rgb(0, 140, 255);
+    /* background-color: rgb(0, 140, 255); */
+    background-color: rgb(33, 200, 69);
     color: white;
-    height: 10px;
+    height: 20px;
 }

@@ -1,75 +1,59 @@
 const fs = require('fs')
 const moveFileToRoot = require('./moveFileToRoot.js')
+const countOfDirectory = require('./countOfDirectory.js')
 
 // let shipFolders = []
 
 const GetData = function (processPath) {
+    try {
+        document.getElementById('progress').remove()
+    } catch{
 
+    }
     document.getElementById('errors').innerHTML = ''
     const files = fs.readdirSync(processPath)
     let progressValue = 0
-    let everage = files.length / 100
+    let everageUnit = 100 / countOfDirectory.CountOfDirectory(files, processPath)
     files.forEach((file, index) => {
-        const barr = document.getElementById('barr')
-        let progress = document.getElementById('progress')
+        setTimeout(function () {
+            const barr = document.getElementById('barr')
+            let progress = document.getElementById('progress')
 
 
-        try {
-            if (fs.lstatSync(`${processPath}\\${file}`).isDirectory()) {
-                let reason = moveFileToRoot.MoveFileToRoot(processPath, file)
-                if (reason) {
-                    var x = document.createElement("div");
-                    x.setAttribute('class', 'error')
-                    var t = document.createTextNode(reason);
-                    x.appendChild(t);
-                    document.getElementById('errors').appendChild(x);
-                }
+            try {
+                if (fs.lstatSync(`${processPath}\\${file}`).isDirectory()) {
+                    let reason = moveFileToRoot.MoveFileToRoot(processPath, file)
+                    if (reason) {
+                        var x = document.createElement("div");
+                        x.setAttribute('class', 'error')
+                        var t = document.createTextNode(reason);
+                        x.appendChild(t);
+                        document.getElementById('errors').appendChild(x);
+                    }
 
-                if (!!progress) {
-                    setTimeout(function () {
 
-                        progressValue = progressValue + everage
+                    if (!!progress) {
+                        progressValue = progressValue + everageUnit
                         console.log(progressValue)
                         progress.setAttribute('style', `width:${progressValue}%`)
+                        progress.innerText = `${Math.round(progressValue)}%`
+                    } else {
+                        let newProgress = document.createElement('div')
+                        newProgress.setAttribute('id', 'progress')
+                        barr.appendChild(newProgress)
+                        progressValue = everageUnit
+                    }
 
-                    }, 3000);
 
-                } else {
-                    let newProgress = document.createElement('div')
-                    newProgress.setAttribute('id', 'progress')
-                    barr.appendChild(newProgress)
+
                 }
-
+            } catch {
+                console.log('ze by to padlo na *.SYS')
             }
-        } catch {
-            console.log('ze by to padlo na *.SYS')
-        }
-
+        }, index * 10);
 
     });
 
-    // files.map(file => {
-
-    //     try {
-    //         if (fs.lstatSync(`${processPath}\\${file}`).isDirectory()) {
-    //             let reason = moveFileToRoot.MoveFileToRoot(processPath, file)
-    //             if (reason) {
-    //                 var x = document.createElement("div");
-    //                 x.setAttribute('class', 'error')
-    //                 var t = document.createTextNode(reason);
-    //                 x.appendChild(t);
-    //                 document.getElementById('errors').appendChild(x);
-    //             }
-    //         }
-    //     } catch {
-    //         console.log('ze by to padlo na *.SYS')
-    //     }
-    // })
 }
-
-
-
-
-
 
 exports.GetData = GetData
