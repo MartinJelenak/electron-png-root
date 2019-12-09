@@ -5,7 +5,8 @@
   "main": "main.js",
   "dependencies": {
     "electron": "^5.0.3",
-    "electron-log": "^3.0.7"
+    "electron-log": "^3.0.7",
+    "image-size": "^0.8.3"
   },
   "devDependencies": {
     "electron-packager": "^14.1.1"

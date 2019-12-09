@@ -9,18 +9,17 @@ const url = require('url');
 
 let win;
 
+
+
 function createWindow() {
 
     win = new BrowserWindow({
-        // frame: false,
-        width: 300,
-        // width: 600,
+
+        width: 600,
         height: 600,
         webPreferences: {
             nodeIntegration: true
-
         },
-        resizable: false
     })
 
     win.setMenuBarVisibility(false)
@@ -30,11 +29,37 @@ function createWindow() {
         protocol: 'file:',
         slashes: true
     }));
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools()
     win.on('closed', () => {
         win = null
     });
 }
+
+
+
+
+// function createWindow() {
+
+//     win = new BrowserWindow({
+//         width: 300,
+//         height: 600,
+//         webPreferences: {
+//             nodeIntegration: true
+//         },
+//         resizable: false
+//     })
+
+//     win.setMenuBarVisibility(false)
+
+//     win.loadURL(url.format({
+//         pathname: path.join(__dirname, 'index.html'),
+//         protocol: 'file:',
+//         slashes: true
+//     }));
+//     win.on('closed', () => {
+//         win = null
+//     });
+// }
 
 
 

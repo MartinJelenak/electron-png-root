@@ -16,9 +16,9 @@ const GetData = function (processPath) {
     let everageUnit = 100 / countOfDirectory.CountOfDirectory(files, processPath)
     files.forEach((file, index) => {
         setTimeout(function () {
+
             const barr = document.getElementById('barr')
             let progress = document.getElementById('progress')
-
 
             try {
                 if (fs.lstatSync(`${processPath}\\${file}`).isDirectory()) {
@@ -49,6 +49,7 @@ const GetData = function (processPath) {
                 }
             } catch {
                 console.log('ze by to padlo na *.SYS')
+                progressValue = progressValue + everageUnit
             }
         }, index * 10);
 
